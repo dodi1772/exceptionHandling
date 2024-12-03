@@ -4,7 +4,7 @@
 	{
 		static void Main(string[] args)
 		{
-            Console.WriteLine("Hi");
+			/*Console.WriteLine("Hi");
             Console.WriteLine("help help help, gyerek");
 			int jogyerekek = 0;
 			bool siker = false;
@@ -21,6 +21,11 @@
                     }
                     siker = true;
                 }
+                catch (OverflowException)
+                {
+                    //2,147,483,647
+                    Console.WriteLine("Sok");
+                }
                 catch (FormatException)
                 {
                     Console.WriteLine("Hiba: Csak számokat adhatsz meg.");
@@ -30,7 +35,36 @@
                     Console.WriteLine($"Hiba: {ex.Message}");
                 }
             }
-            Console.WriteLine($"thx miki: {jogyerekek}");
+            Console.WriteLine($"thx miki: {jogyerekek}");*/
+			elso();
+
         }
+        static void elso()
+        {
+			Console.WriteLine("Add meg a jó gyerekek nevét: ");
+			string nev = Console.ReadLine();
+			Console.WriteLine($"Hány ajándékot kapjon {nev}?");
+			try
+			{
+				int ajandek = Convert.ToInt32(Console.ReadLine());
+				if (ajandek < 0)
+				{
+					throw new Exception("Az ajándékok száma nem lehet negatív.");
+				}
+				Console.WriteLine($"{nev} {ajandek} darab ajándékot kapott.");
+			}
+			catch (FormatException)
+			{
+				Console.WriteLine("Csak számot lehet megadni.");
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine($"Hiba: {ex.Message}");
+			}
+		}
+		static void masodik()
+		{
+
+		}
 	}
 }
