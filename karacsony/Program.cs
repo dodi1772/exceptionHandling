@@ -64,7 +64,69 @@
 		}
 		static void masodik()
 		{
+			string[] raktar = {"édesség","ruha","játék"};
+			int[] mennyiseg = { 10, 15, 2 };
+            for (int i = 0; i < raktar.Length; i++)
+            {
+                Console.WriteLine($"Nincs elég {raktar[i]} raktáron!");
+				try
+				{
+                    Console.WriteLine("Add meg a feltöltendő mennyiséget: ");
+					int beker = Convert.ToInt32(Console.ReadLine());
+                    if (beker<0)
+                    {
+                        throw new Exception("A szám nem lehet negatív!")
+                    }
+					mennyiseg[i] += beker;
+                    Console.WriteLine($"A {raktar[i]} új mennyisége ennyi: {mennyiseg[i]}");
+                }
+				catch(FormatException)
+				{
+                    Console.WriteLine("A bemenet hibás!");
+				}
+				catch (Exception ex)
+				{
+                    Console.WriteLine($"Hiba: {ex.Message}");
+				}
+            }
+        }
+		static void harmadik()
+		{
+            Console.Write("Hány gyerek kapott ajándékot: ");
+			int gyerekSzam=Convert.ToInt32(Console.ReadLine());
+			List<int> ertekek = new List<int>();
+			bool fut = true;
+            for (int i = 0; i < gyerekSzam; i++)
+            {
+                while (fut)
+                {
+                    try
+                    {
+                        Console.Write($"Add meg az ajándék értékét({i + 1}): ");
+                        int ertek = Convert.ToInt32(Console.ReadLine());
+                        if (ertek <= 0)
+                        {
+                            throw new Exception("Az érték nem lehet negatív!");
+                        }
+                        ertekek.Add(ertek);
+                        Console.WriteLine("Érték hozzáadva a listához.");
+                        fut = false;
+                    }
+                    catch (FormatException)
+                    {
+                        Console.WriteLine("A bemenet csak szám lehet.");
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"Hiba: {ex.Message}");
+                    }
+                }
+                fut = true;
+            }
+        }
+        static void negyedik()
+        {
 
-		}
+        }
 	}
 }
