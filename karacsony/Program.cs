@@ -4,7 +4,7 @@
 	{
 		static void Main(string[] args)
 		{
-			/*Console.WriteLine("Hi");
+            /*Console.WriteLine("Hi");
             Console.WriteLine("help help help, gyerek");
 			int jogyerekek = 0;
 			bool siker = false;
@@ -36,7 +36,7 @@
                 }
             }
             Console.WriteLine($"thx miki: {jogyerekek}");*/
-			elso();
+            negyedik();
 
         }
         static void elso()
@@ -126,7 +126,65 @@
         }
         static void negyedik()
         {
-
+            List<string> gyerekNevek = new List<string>();
+            List<int> ajandekSzamok = new List<int>();
+            bool fut=true;
+            while (fut)
+            {
+                try
+                {
+                    Console.Write("Add meg a gyerek nevét: ");
+                    string bekerNev = Console.ReadLine();
+                    gyerekNevek.Add(bekerNev);
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Nem megfelelő bemeneti formátum.");
+                }
+                catch (ArgumentNullException)
+                {
+                    Console.WriteLine("A megadott érték nem lehet üres.");
+                }
+                try
+                {
+                    Console.Write("Add meg az ajándékok mennyiségét: ");
+                    int ajandekMenny = Convert.ToInt32(Console.ReadLine());
+                    if (ajandekMenny<0)
+                    {
+                        throw new Exception("A szám nem lehet negatív.")
+                    }
+                    ajandekSzamok.Add(ajandekMenny);
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Nem megfelelő bemeneti formátum.");
+                }
+                catch (ArgumentNullException)
+                {
+                    Console.WriteLine("A megadott érték nem lehet üres.");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Hiba: {ex.Message}");
+                }
+                try
+                {
+                    Console.Write("Még megad(i/n): ");
+                    char megad = Convert.ToChar(Console.ReadLine());
+                    if (megad == 'n')
+                    {
+                        fut = false;
+                    }
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Nem megfelelő bemeneti formátum.");
+                }
+                catch (ArgumentNullException)
+                {
+                    Console.WriteLine("A megadott érték nem lehet üres.");
+                }
+            }
         }
 	}
 }
